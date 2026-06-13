@@ -7,6 +7,7 @@
 ## Current Predictions (13 June 2026)
 
 68 remaining group stage matches predicted. Model run at market close 13 June 2026.
+xG = expected goals. H = first-listed team, A = second-listed team. Score = rounded xG after Gaussian noise (σ=0.3).
 
 | # | Date | Grp | Home | Away | Score | xG_H | xG_A | Favorite |
 |---|------|-----|------|------|-------|------|------|----------|
