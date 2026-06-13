@@ -7,7 +7,11 @@
 ## Current Predictions (13 June 2026)
 
 68 remaining group stage matches predicted. Model run at market close 13 June 2026.
-xG = expected goals. H = first-listed team, A = second-listed team. Score = rounded xG after Gaussian noise (σ=0.3).
+How to read this table:
+• **Home / Away** — the two teams in the fixture. "Home" is listed first by convention; no home advantage is applied.
+• **Score** — the model's predicted final scoreline. Each team's expected goals (xG) is rounded to the nearest integer after adding a small random noise term (σ = 0.3) to simulate real-world variance.
+• **xG_H / xG_A** — expected goals for each team before rounding. A team with xG 2.8 is expected to score roughly 3 goals; a team with xG 0.3 is expected to score roughly 0. The gap between the two xG values indicates how one-sided the match is expected to be.
+• **Favorite** — the team with the higher blended FIFA + economic score. "Draw" appears when the xG values are nearly identical.
 
 | # | Date | Grp | Home | Away | Score | xG_H | xG_A | Favorite |
 |---|------|-----|------|------|-------|------|------|----------|
