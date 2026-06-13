@@ -1,0 +1,226 @@
+Skip to Main NavigationSkip to Main Content
+Please note the content on this website is for Investment Professionals only and should be shared responsibly. No other persons should rely on the information contained within this website.
+M&G
+
+EN
+
+Dark Mode Switch
+Bond Vigilantes
+M&G Pride
+Saturday 13 June 2026
+Home
+About
+Our Bloggers
+Archive
+Search for:
+Search...
+The Bond Vigilantes World Cup Model
+
+By Joe Sullivan-Bissett
+11 June 2026
+Share:
+For the 2026 World Cup, the Bond Vigilantes team have designed a predictor model, combining economic fundamentals with official FIFA rankings to help forecast how the World Cup will play out.
+
+Each day we will look at some of the most interesting games, and provide not only a predicted outcome from our model, but also some interesting (non-football-related) talking points from our usual bloggers, plus a few guests across the broader fixed income team.
+
+Report back each day to see the latest predictions and country write-ups from our bond specialists.
+
+The model
+
+For those here for the model, below we have shared the formulae and rationale for the output.
+
+The model is a 50/50 blend between a normalised FIFA points score, and a normalised economic metric score. Depending on the relative strength of the scores, an expected goals number is produced to predict the result of the game.
+
+After several million runs of code, we have tweaked our economic model to produce the following output, based on population, real GDP growth, inflation, unemployment, policy rates, and finally, government debt-to-GDP ratios:
+
+Econ Model:  (LOG10(Pop)-6)^1.2 × (1+GDP/8) × 1/(1+Infl/8) × (1-Unemp) × 1/(1+Rate/20) × 1/(0.8+Debt÷GDP/5)
+
+The rationale for the inclusion of the above metrics follows.
+
+Population is the bedrock of the model. Football is a numbers game: the more people you have, the more likely it is that a few of them can do something with a ball. We use a log scale because going from 5 million to 50 million matters enormously, but going from 500 million to 5 billion does not help you find a better left back.
+GDP growth captures momentum. A growing economy tends to mean investment in infrastructure, and with that comes football academies.
+Inflation is the instability penalty: when the price of a matchday pie is doubling every year, it is hard to maintain the kind of institutional stability that produces world class players.
+Unemployment is a proxy for development. Lower unemployment signals a functioning economy, disposable income for grassroots football, and parents who can afford to let their children train rather than study to work.
+The policy rate is a good signal for macroeconomic credibility. Countries with rates below 5% tend to be places where institutions work.
+Government debt to GDP is deliberately the weakest factor. Japan for example, at 255%, would otherwise be pushed too far down the rankings. We penalise heavy debt gently, like a yellow card rather than a red.
+Finally, we blend the economic score 50/50 with the FIFA world rankings (the official ones from 1 April) to stop the model producing results that are funny for thirty seconds and then become a credibility problem. Argentina finishing behind Curacao on pure economics is entertaining, but the rankings anchor reminds us that Scaloni’s squad is probably still quite good despite the peso.
+Finally, we’ve sprinkled in a little bit of randomness as there is no shortage of variance in sporting events!
+
+Joe Sullivan-Bissett, Investment Director
+
+
+12 June
+
+Well, perhaps we are on to something here with calling the first two games perfectly.
+
+However, it’s early days and important to separate the signal from the noise. Let’s see how the model does over the weekend. Below are some more predictions alongside narrative from our bond specialists.
+
+We have included a full set of predictions at the bottom of the blog.
+
+
+First up, it’s the USA vs Paraguay this evening.  
+
+
+
+From Ben Lord, Macro Fixed Income Fund Manager:
+
+The US is currently ranked as 3rd favourite to win the world cup in the Bond Vigilantes model, but this surely reflects the size of its population more than any footballing prowess. That being said, the US remains today the largest economy in the world, and the story of 2026 so far has been one of continued resilience and even possible reacceleration. Could economic dominance and momentum in 2026 carry over into football? It seems unlikely, based on history.
+
+Were the US to finish 3rd, this would match its best ever result in the tournament, when it was beaten by Argentina in the semi-finals (there must have been different rules back then). This result though occurred almost 100 years ago, in 1930: if the US does well, alarm bells should start ringing about another Great Depression. The last time the US hosted the world cup was in 1994, and they performed well, making it into the last 16 where they were beaten 1-0 by the eventual winners, Brazil.
+
+But whilst the US has been the largest economy in the world for well over 100 years, there are surely changes afoot today? In PPP terms, China has already overtaken the US as the largest economy, although in dollar terms China is expected to overtake the US in the 2030s. However, this will depend on USD/RMB. Talking solely of the USD, there are clear warning signs ahead. The US has long had the largest capital markets in the world, but it now also has the largest amount of government debt outstanding in the world (in USD terms) and by some margin. Furthermore, this margin is growing. The deficit is growing, and demographics clearly suggest that the deficit is going to start to grow even faster in the next decades, simply because spending is drastically outpacing revenues.
+
+With the world’s reserve currency, and a steady, democratic and multilateral world order view, this growing deficit and debt pile has been manageable for many years. However, with new, unpredictable, unilateral, autocratic and volatile leadership, all of these post WW2 US economic traits are at risk of significant change. The US team comes into this world cup with a large population suggesting a strong team, and an economy with 5% or more nominal GDP growth that is the envy of most of the developed world. Whilst Gianni Infantino and FIFA may view Trump as a pacifying force on the world stage I bet even the US team are delighted to be playing this tournament at home; imagine the hostile reaction they would get anywhere else!
+
+And their opponents Paraguay, with commentary from Carlos Carranza, EMD Fund Manager:
+
+Disciplined fiscals… disciplined football. If this game were played on macro credibility rather than the pitch, Paraguay would come in looking exceptionally solid: on the field, they are defined by a structured, physical, and hard‑to‑break‑down system, conceding just 10 goals in 18 qualifying games, which is a pretty good score, and a reflection of patience and collective discipline. In macro…the story is strikingly similar, with consistently tight fiscal management delivering sovereign upgrades from S&P and Moody’s, a positive outlook from Fitch, and a clear trajectory toward Investment Grade in the near term. In both arenas, Paraguay plays a low‑volatility, high‑discipline game, so if they approach this match the same way they have managed their economy, they’ll put themselves in a strong position to win (world cup surprise?).
+
+Then taking you through the weekend, we have selected the following three fixtures.
+
+
+Qatar vs Switzerland
+
+
+
+For Qatar, we have Purvi Harlalka, EM Sovereign Analyst and Nick Smallwood, EMD Fund Manager:
+
+Qatar was the smallest country ever to host the FIFA World Cup (2022) and the first Arab one to do so. Although their debut 2022 campaign disappointed as they lost all their Group games and the country has now been badly hit by the Iran conflict, the Qatari economy went into the conflict on a strong footing and is likely to be a story of rebounds. Real GDP is projected to contract sharply in 2026, by 8.6 percent year-on-year, driven by a significant decline in hydrocarbon output and broader trade disruptions. But the rebound in 2027 is expected to be strong with >8% GDP growth driven by North Field LNG expansion. Similarly, the budget will also take a hit, with the deficit widening to 4% in 2026, from 1% in 2025 but return to surpluses by 2030 as LNG production increases (O&G is 80% of government revenues). Given their vast amounts of wealth (sovereign assets are an estimated 230% of GDP), they will simply pick themselves up and carry on building again when the dust settles. The football team will doubtless enter the tournament with the same mentality, as their Group containing fellow fiscal behemoths Switzerland and Canada as well as Bosnia-Herzegovina looks significantly less challenging than what they faced in 2022 (Netherlands, Senegal and Ecuador). As the nation rebuilds, its people will be hoping that their team can similarly bounce back from 2022 to record their first-ever World Cup win this time around.
+
+And for Switzerland, it’s Anjulie  Rusius, Macro Fixed Income Fund Manager:
+
+If you’re looking for a footballing fun-do, Switzerland’s unlikely to cause a stir, but big cheeses they serve a-plenty. Swapping your Emmental for Embolo and raclette for Rodriguez – this may well be a team to watch; though sadly not possible on your Rolex, Omega or TAGs!
+
+A smart-watch would instead be goalkeeper Kobel, as one of the best in Europe, he’s considered a safe pair of hands. Not unlike the nation’s currency, where the Swiss-Franc has long been regarded a “safe haven”. Indeed, in Q1 2026, CHF reached its strongest level in over a decade against both the EUR and USD, driven by investors seeking alternatives to the latter. Despite paring back a tad since, the ongoing geopolitical stress from the Iran war has continued to generate safe-haven inflows into the currency.
+
+The fly in the fondue is potentially however the Swiss National Bank. Independent and cautious, this central bank is ready to move mountains. With President Schlegel asserting the SNB has “unrestricted room for manoeuvre” on both rates and FX interventions, the SNB stand ready to sell francs to cap appreciation. Goalkeeping at its finest.
+
+Will the football squad prove as nimble as the bank? With rates held at zero for a year now and inflation running at the lower end of the 0-2% CPI target range (interestingly, Swiss inflation is the lowest of all competing nations), the SNB is cautiously doing its job – neither over or undershooting targets, unlike many of its peers. The Swiss continue to hit their goal. Solid, like its chocolate. Indeed, should Swiss football fail to impress, I for one will be comfort bingeing on its Lindt and Toblerone exports instead. 
+
+
+Australia vs Turkey
+
+
+
+For Australia, we have Eva Sun-Wai, Global Macro Fund Manager:
+
+Australia’s World Cup record mirrors its macro story: rarely among the pre-tournament favourites, but usually still around when things get interesting, having reached the round of 16 a handful of times (fun fact: that disguises a long absence, failing to qualify for 32 years between 1974 and 2006).
+
+Markets have spent much of the past year debating whether restrictive monetary policy would finally bring the economy to heel, only to discover that a combination of resilient employment, sticky core inflation and commodity exports remains surprisingly difficult to tackle. Fundamentals remain strong: unemployment has held around 4%, Australia retains a AAA sovereign rating and government debt sits at roughly a half of GDP. Yet Australian government bonds yield more than US Treasuries (and this has widened as the RBA has been responsive to inflation and hiked 3 consecutive times) – feels a bit like a team that keeps qualifying but is priced like an outsider. Not as perplexing as them still being in Eurovision though (P.S. Delta Goodrem was excellent).
+
+So they may not win the World Cup, but the bonds seem like a good place to park in an environment where fiscal deterioration could start to steepen curves again. And if all else fails, Australia retains one advantage that football teams rarely enjoy: it can always export more iron ore.
+
+And for Turkey, a comment from Eldar Vakhitov, EM Sovereign Analyst
+
+Turkey will play in the World Cup for the third time in its history – its first appearance dates all the way back to 1954. What truly stands out is the 2002 campaign, when the team came remarkably close to gold medals, losing only narrowly to eventual champions Brazil in the semi-final. Speaking of gold, it’s something the Turkish public has long held in high regard. Gold imports have remained consistently high over the years, and today the metal accounts for nearly two thirds of the central bank’s international reserves.
+
+Back in 2002, Turkey ultimately secured the bronze medals, famously scoring the fastest goal in World Cup history – just 11 seconds into the third place match against South Korea. Investors could only wish Turkish inflation slowed at such speed, but unfortunately the process has been far more drawn out. Nevertheless, the country’s policy framework has improved notably in recent years, mirroring the national team’s own progress. While most macroeconomic indicators are weaker compared to its group rivals, this should not prevent the football squad from performing well in the group stage. Matching the spectacular 2002 campaign would be quite a challenge, but with several standout players in midfield and attack, qualifying into the play-offs at least seems well within reach. 
+
+
+Ivory Coast vs Ecuador
+
+
+
+Ivory Coast commentary provided by Purvi Harlalka, EM Sovereign Analyst and Nick Smallwood, EMD Fund Manager
+
+Fun Fact: Ivory Coast’s football team is nicknamed the Elephants due to the country’s long association with the animal. Back at a World Cup for the first time in 12 years, the Elephants are tipped to be dark horses. However, there is nothing dark about the country’s economic performance, which has been consistently impressive. Over the last decade (2016–2026), Ivory Coast (Côte d’Ivoire) has sustained one of the fastest and most resilient economic expansions in Sub-Saharan Africa, achieving an average annual real GDP growth rate of approximately 6.5% to 7.0%. This is in large part thanks to prudent policy making, a business-friendly regime, and a disciplined expansion of the supply side via investment in infrastructure that has kept inflation (2.5-3.5% in the last decade) and fiscal deficits contained. More recently, they have benefitted from the gold price rally that has lifted their current account  from -7.7% of GDP in 2022 to -2.9% of GDP at end 2025. A few more years on this trajectory and Ivory Coast will be one of the few African sovereigns to join the Investment Grade club (it is currently two notches below). Their football team has a good chance of moving in the same direction. While they have never progressed past the Group stages in any of the three World Cups in which they participated (2006, 2010 and 2014), this can largely be ascribed to very tough groups and bad luck (a single goal against Portugal would have seen them move to the knockout stages in 2010). With an easier Group this time – they face Ecuador, Germany and Curacao – and a more generous path to the second round, Ivory Coast’s chances of improving their footballing record are as bright as their economic prospects.
+
+And for Ecuador, Charles de Quinsonas, Head of EMD, says:
+
+In 1999, Ecuador became the first country to default on its Brady bond. That took them away from American football into their first participation to the FIFA World Cup in 2002. Since then, they defaulted twice on their bonds. Once in 2008, the so-called “strategic” default when President Correa declared the bonds illegitimate and refused to pay despite having the ability to do so. The second default was in 2020 during COVID and a low oil price environment.
+
+This year will mark the country’s fifth participation in the World Cup and their group-stage competitors Germany, Ivory Coast and Curacao should know that Ecuador have won at least one match in each World Cup they’ve played. The squad is known for its defensive quality with defenders playing for Paris Saint-Germain and Arsenal, and a midfielder from Chelsea. Will that be enough to advance past the group stage against almighty Germany and improving credit story Ivory Coast? After all, Ecuador’s President Noboa’s biggest fan in the US is Donald Trump and the past year’s taught bond investors that it paid off to bet on Ecuador. Fiscal consolidation, a performing economy, and a recent tailwind of oil revenues (helped by the cut of diesel subsidies) have led the country’s 10yr $ bonds to trade from >15% a year ago to now yielding just over 8%. That’s the Ecuador paradox: the country sits at a geographic zero-point but is a place where extremes define the narrative.
+
+Previous posts follow.
+
+
+11 June
+
+First up is the opening game, Mexico vs South Africa.
+
+
+
+
+Carlos Carranza, Emerging Market Debt Portfolio Manager says:
+
+Well…if South Africa manages to play the same way it has managed its fiscal dynamics, then Mexico should brace for impact, because that staggering narrowing in the deficit has been a goleada all along.
+
+But make no mistake, Mexico is still a “futbol IG” and they are going to put up a great battle. El tricolor has very strong institutions: like Banxico or Guillermo Ochoa. Neither of them will ever drop the ball. Literally.
+
+ Both in politics and futbol….South Africa doesn’t do superstars. They’re more like a well-diversified portfolio, resilient and surprisingly effective when combined. Don’t forget the ANC lost its majority in 2024 and then entered into the ultimate football-finance strategy: GNU = “Goals Need Unity!!”
+
+Our model predicts this one to come out as 2-0 to the hosts, though I think there is scope for a 1-1 here. Mexico will attack…but SA will tighten the spreads. I am inflating my expectations…because it’s not just a match…it’s an EM rally.
+
+
+Following that, it’s South Korea vs Czechia.
+
+
+
+
+Eva Sun-Wai, Global Macro Portfolio Manager says:
+
+South Korea arrives at the World Cup with a profile familiar to investors: strong fundamentals, plenty of volatility and absolutely no consensus on the right narrative. Equity markets have swung between AI euphoria and sharp sell-offs, higher oil prices have nudged inflation forecasts higher, and the KRW continues to command more attention than most central banks would prefer. Yet semiconductor exports are growing at 169% YoY, total exports have recorded their strongest growth since 1984, and the Bank of Korea has upgraded its 2026 growth forecast to 2.6% from 2.0%.
+
+The result is a reaction function that would give most football managers a headache. Inflation says one thing, growth says another, the KRW occasionally demands an emergency intervention, and then the AI supply chain turns up and changes the scoreline. It is perhaps telling that the BOK’s policy discussions increasingly span inflation, growth, financial stability and the exchange rate simultaneously.
+
+Meanwhile, S Korea finds itself in familiar territory: good enough to compete for qualification, but still trying to prove it belongs among the elite. Korea Treasury Bonds are entering the FTSE World Government Bond Index, with estimates of roughly USD52bn of inflows, while the longer-running pursuit of developed-market status continues. Much like Korea’s famous 2002 run to the semi-finals, everyone agrees it was an impressive achievement; the debate is whether it was a stepping stone to something bigger or simply a very memorable tournament.
+
+Eldar Vakhitov, Emerging Markets Sovereign Analyst with our commentary for Czechia.
+
+Czechia is set to appear in the World Cup for only the second time as an independent nation, following the breakup of Czechoslovakia in 1992. Their previous appearance was in 2006, when the tournament was hosted by neighbouring Germany, their main trading partner. Even then, they failed to progress to the knockout stage. Meanwhile, Czechia’s GDP per capita has climbed to 71% of the euro area average in 2026, up from just 45% in 2006. Whether this impressive performance can be mirrored in a stronger showing at this World Cup remains to be seen. This improvement is one of the key reasons the IMF now classifies Czechia – along with group rival South Korea – as an advanced economy. The question is whether much better macroeconomic and institutional foundations will help them outperform the “true” emerging market countries in their group, Mexico and South Africa.
+
+Czechia has long maintained prudent fiscal policies and keeps government debt relatively low, with almost all of it denominated in its own currency – this significantly limits its reliance on foreign financing. On the pitch, however, the national team will depend heavily on its star players based in foreign clubs to make an impact. Meanwhile, the Czech central bank is considered one of the most disciplined across emerging markets, fiercely guarding its inflation targeting credibility. Those same qualities – discipline, consistency, and cautious approach – may be exactly what the football team needs if it hopes to reach the knockout stage this time.
+
+
+Summary of all predictions (updated 12 June)
+
+Summary of predicted results
+The value of investments will fluctuate, which will cause prices to fall as well as rise and you may not get back the original amount you invested. Past performance is not a guide to future performance.
+
+Category: World Cup
+Tags: World Cup
+
+Share:
+
+Joe Sullivan-Bissett
+Job Title: Investment Director
+
+Specialist Subjects: Macroeconomics
+
+Likes: Politics, Football, Travelling, Game theory, Perudo
+
+Heroes: Alex Turner, Stephen Graham, Ruby (my Boston Terrier)
+
+Blast from the Past logo
+19 years of comment
+Discover historical blogs from our extensive archive with our Blast from the past feature. View the most popular blogs posted this month - 5, 10 or 15 years ago!
+
+
+Bond Vigilantes
+Get Bond Vigilantes updates straight to your inbox
+
+Recent Blogs
+Not all oil-exporting countries are the cracking winners you think.
+By Charles de Quinsonas
+4 June 2026
+Big Beautiful Bonds: why big tech’s borrowing boom is reshaping credit markets
+By Richard Woolnough
+3 June 2026
+Geopolitical tensions: Markets tend to price risk, not hope
+By ABS Team
+18 May 2026
+Canary in the Credit Market: Are Euro Single-Bs Singing?
+By Guest contributor – David Fancourt
+12 May 2026
+Corporate Hybrids: strong demand, diminishing reward?
+By Craig Rumbelow
+11 May 2026
+Share this highlighted text:
+
+Get Bond Vigilantes updates straight to your inbox
+M&G
+Disclaimer
+Accessibility
+Privacy and Cookie Policy
+Terms and Legal Information
+Contact Us
