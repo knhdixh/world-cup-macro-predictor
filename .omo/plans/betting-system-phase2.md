@@ -270,7 +270,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   **Blocks**: Task 15 (CLI integration)
   **Blocked By**: None
 
-- [ ] 10. The Odds API provider — live odds integration
+- [x] 10. The Odds API provider — live odds integration
 
   **What to do**:
   - Create `src/betting/api_odds.py`
@@ -286,7 +286,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   **Blocks**: Task 15
   **Blocked By**: None
 
-- [ ] 11. Odds provider registry — unified odds interface
+- [x] 11. Odds provider registry — unified odds interface
 
   **What to do**:
   - Create `src/betting/providers.py`
@@ -300,7 +300,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   **Blocks**: Task 15
   **Blocked By**: Task 10
 
-- [ ] 12. Streamlit dashboard — core layout
+- [x] 12. Streamlit dashboard — core layout
 
   **What to do**:
   - Create `src/web/app.py` — Streamlit app entry point
@@ -319,7 +319,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   **Blocks**: None
   **Blocked By**: Tasks 2, 3, 4 (needs backtest + calibration data for charts)
 
-- [ ] 13. Performance charts — calibration + ROI visualization
+- [x] 13. Performance charts — calibration + ROI visualization
 
   **What to do**:
   - Create `src/web/charts.py`
@@ -335,7 +335,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   **Blocks**: None
   **Blocked By**: Tasks 2-5
 
-- [ ] 14. CLI extension — Phase 2 flags
+- [x] 14. CLI extension — Phase 2 flags
 
   **What to do**:
   - Extend `src/betting/cli.py` with new subcommands:
@@ -352,7 +352,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   **Blocks**: Task 16 (integration)
   **Blocked By**: Tasks 7-11
 
-- [ ] 15. Integration test suite — end-to-end Phase 2
+- [x] 15. Integration test suite — end-to-end Phase 2
 
   **What to do**:
   - Create `tests/betting/test_phase2_integration.py`

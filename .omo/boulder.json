@@ -47,6 +47,45 @@
       "status": "completed",
       "ended_at": "2026-06-15T14:27:09.856Z",
       "elapsed_ms": 29351
+    },
+    "todo:10": {
+      "task_key": "todo:10",
+      "task_label": "10",
+      "task_title": "The Odds API provider — live odds integration",
+      "session_id": "opencode:ses_134517fc5ffe6P99d8uSNpKgp3",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-06-15T14:29:23.980Z",
+      "started_at": "2026-06-15T14:29:14.300Z",
+      "status": "completed",
+      "ended_at": "2026-06-15T14:29:23.980Z",
+      "elapsed_ms": 9680
+    },
+    "todo:11": {
+      "task_key": "todo:11",
+      "task_label": "11",
+      "task_title": "Odds provider registry — unified odds interface",
+      "session_id": "opencode:ses_1344fe8dcffe2xU7vsEzFy8xdJ",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-06-15T14:31:15.706Z",
+      "started_at": "2026-06-15T14:31:08.327Z",
+      "status": "completed",
+      "ended_at": "2026-06-15T14:31:15.706Z",
+      "elapsed_ms": 7379
+    },
+    "todo:12": {
+      "task_key": "todo:12",
+      "task_label": "12",
+      "task_title": "Streamlit dashboard — core layout",
+      "session_id": "opencode:ses_1344e09a1ffew9PG04fn932p0g",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-06-15T14:38:48.365Z",
+      "started_at": "2026-06-15T14:32:51.860Z",
+      "status": "completed",
+      "ended_at": "2026-06-15T14:38:48.365Z",
+      "elapsed_ms": 356505
     }
   },
   "schema_version": 2,
@@ -179,7 +218,7 @@
       "plan_name": "betting-system-phase2",
       "status": "active",
       "started_at": "2026-06-15T14:17:04.033Z",
-      "updated_at": "2026-06-15T14:27:09.856Z",
+      "updated_at": "2026-06-15T14:38:48.365Z",
       "session_ids": [
         "opencode:ses_135537d61ffepq6F3VUVMBMk7z"
       ],
@@ -226,12 +265,51 @@
           "status": "completed",
           "ended_at": "2026-06-15T14:27:09.856Z",
           "elapsed_ms": 29351
+        },
+        "todo:10": {
+          "task_key": "todo:10",
+          "task_label": "10",
+          "task_title": "The Odds API provider — live odds integration",
+          "session_id": "opencode:ses_134517fc5ffe6P99d8uSNpKgp3",
+          "agent": "Sisyphus-Junior",
+          "category": "unspecified-high",
+          "updated_at": "2026-06-15T14:29:23.980Z",
+          "started_at": "2026-06-15T14:29:14.300Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T14:29:23.980Z",
+          "elapsed_ms": 9680
+        },
+        "todo:11": {
+          "task_key": "todo:11",
+          "task_label": "11",
+          "task_title": "Odds provider registry — unified odds interface",
+          "session_id": "opencode:ses_1344fe8dcffe2xU7vsEzFy8xdJ",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T14:31:15.706Z",
+          "started_at": "2026-06-15T14:31:08.327Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T14:31:15.706Z",
+          "elapsed_ms": 7379
+        },
+        "todo:12": {
+          "task_key": "todo:12",
+          "task_label": "12",
+          "task_title": "Streamlit dashboard — core layout",
+          "session_id": "opencode:ses_1344e09a1ffew9PG04fn932p0g",
+          "agent": "Sisyphus-Junior",
+          "category": "visual-engineering",
+          "updated_at": "2026-06-15T14:38:48.365Z",
+          "started_at": "2026-06-15T14:32:51.860Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T14:38:48.365Z",
+          "elapsed_ms": 356505
         }
       }
     }
   },
   "active_work_id": "betting-system-phase2-41971225",
-  "updated_at": "2026-06-15T14:27:09.856Z",
+  "updated_at": "2026-06-15T14:38:48.365Z",
   "status": "active",
   "task_elapsed_ms": 349460,
   "agent": "atlas"
