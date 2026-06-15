@@ -1,104 +1,126 @@
-"""Chart generators for the Streamlit dashboard."""
+"""Chart generators for the Streamlit dashboard using Streamlit native charts."""
 
 from __future__ import annotations
 
 from typing import Any
+import pandas as pd
 
-# Note: These chart functions return dict data structures that can be
-# rendered by Streamlit's built-in chart components or passed to
-# an optional plotting library.
-#
-# For Phase 2, we provide data transformation helpers. Interactive
-# charts can be enabled by installing altair or plotly.
-
-
-def prepare_roi_curve(results: list[dict[str, Any]]) -> dict[str, list[float]]:
-    """Convert backtest results to cumulative ROI curve data.
-    
-    Returns: {"bet_number": [...], "cumulative_profit": [...], "balance": [...]}
-    """
-    balance = 1000.0
-    bet_numbers = []
-    profits = []
-    balances = []
-    
-    for i, r in enumerate(results, 1):
-        bet_numbers.append(i)
-        profit = r.get("profit", 0)
-        profits.append(profit)
-        balance += profit
-        balances.append(balance)
-    
-    # Compute cumulative ROI
+def build_roi_curve(results: list[dict[str, Any]]) -> pd.DataFrame:
+    """Build a cumulative ROI line chart data."""
+    if not results:
+        return pd.DataFrame()
+        
+    profits = [r.get("profit", 0) for r in results]
     cumulative_profit = []
     running = 0.0
     for p in profits:
         running += p
         cumulative_profit.append(running)
+        
+    bet_numbers = list(range(1, len(results) + 1))
     
-    return {
-        "bet_number": bet_numbers,
-        "cumulative_profit": cumulative_profit,
-        "balance": balances,
-    }
+    df = pd.DataFrame({
+        "Bet Number": bet_numbers,
+        "Cumulative Profit": cumulative_profit
+    })
+    return df.set_index("Bet Number")
 
-
-def prepare_reliability_data(curve: dict[str, Any]) -> dict[str, list[float]]:
-    """Convert calibration reliability curve to chart data.
+def build_reliability_chart(curve: dict[str, Any]) -> pd.DataFrame:
+    """Build a reliability diagram data."""
+    if not curve or not curve.get("bin_centers"):
+        return pd.DataFrame()
+        
+    bin_centers = curve["bin_centers"]
+    mean_predicted = curve["mean_predicted"]
+    mean_actual = curve["mean_actual"]
+    counts = curve["counts"]
     
-    Input: output of calibration.reliability_curve()
-    Output: {"bin_center": [...], "mean_predicted": [...], "mean_actual": [...], "count": [...]}
-    """
-    return {
-        "bin_center": curve.get("bin_centers", []),
-        "mean_predicted": curve.get("mean_predicted", []),
-        "mean_actual": curve.get("mean_actual", []),
-        "count": curve.get("counts", []),
-    }
-
-
-def prepare_odds_bucket_data(buckets: dict[str, Any]) -> dict[str, list]:
-    """Convert odds bucket analysis to chart data.
+    # Filter out empty bins
+    valid_idx = [i for i, c in enumerate(counts) if c > 0]
+    x_vals = [mean_predicted[i] for i in valid_idx]
+    y_vals = [mean_actual[i] for i in valid_idx]
+    sizes = [counts[i] * 10 for i in valid_idx] # Scale for visibility
     
-    Input: output of analysis.odds_bucket_roi()
-    Output: {"bucket": [...], "bets": [...], "roi": [...], "win_rate": [...]}
-    """
+    df = pd.DataFrame({
+        "Predicted": x_vals,
+        "Actual": y_vals,
+        "Count": [counts[i] for i in valid_idx],
+        "Size": sizes
+    })
+    return df
+
+def build_odds_bucket_chart(buckets: dict[str, Any]) -> pd.DataFrame:
+    """Build a grouped bar chart data for odds buckets."""
+    if not buckets:
+        return pd.DataFrame()
+        
     bucket_names = []
-    bet_counts = []
     rois = []
     win_rates = []
     
-    for bucket_name, data in sorted(buckets.items()):
-        bucket_names.append(bucket_name)
-        bet_counts.append(data.get("bets", 0))
-        rois.append(data.get("roi", 0.0) * 100)  # Convert to percentage
+    for name, data in sorted(buckets.items()):
+        bucket_names.append(name)
+        rois.append(data.get("roi", 0.0) * 100)
         win_rates.append(data.get("win_rate", 0.0) * 100)
-    
-    return {
-        "bucket": bucket_names,
-        "bets": bet_counts,
-        "roi": rois,
-        "win_rate": win_rates,
-    }
+        
+    df = pd.DataFrame({
+        "Odds Range": bucket_names,
+        "ROI (%)": rois,
+        "Win Rate (%)": win_rates
+    })
+    return df.set_index("Odds Range")
 
-
-def prepare_drawdown(balances: list[float]) -> dict[str, list[float]]:
-    """Compute drawdown series for charting.
-    
-    Returns: {"balance": [...], "peak": [...], "drawdown_pct": [...]}
-    """
+def build_drawdown_chart(balances: list[float]) -> pd.DataFrame:
+    """Build an area chart data showing drawdown."""
+    if not balances:
+        return pd.DataFrame()
+        
     peak = balances[0] if balances else 0
     drawdowns = []
-    peaks = []
     
     for b in balances:
         peak = max(peak, b)
         dd = (peak - b) / peak * 100 if peak > 0 else 0
-        peaks.append(peak)
-        drawdowns.append(dd)
+        drawdowns.append(-dd) # Negative for visual effect
+        
+    df = pd.DataFrame({
+        "Bet Number": list(range(len(drawdowns))),
+        "Drawdown (%)": drawdowns
+    })
+    return df.set_index("Bet Number")
+
+def build_tournament_comparison(results: dict[str, Any]) -> pd.DataFrame:
+    """Build a bar chart data comparing tournament ROIs."""
+    if not results:
+        return pd.DataFrame()
+        
+    tournaments = []
+    rois = []
     
-    return {
-        "balance": balances,
-        "peak": peaks,
-        "drawdown_pct": drawdowns,
-    }
+    for year, data in sorted(results.items()):
+        tournaments.append(str(year))
+        roi = data.get("roi", 0.0) * 100
+        rois.append(roi)
+        
+    df = pd.DataFrame({
+        "Tournament": tournaments,
+        "ROI (%)": rois
+    })
+    return df.set_index("Tournament")
+
+def build_elo_chart(ratings: dict[str, float]) -> pd.DataFrame:
+    """Build a horizontal bar chart data of top 10 Elo ratings."""
+    if not ratings:
+        return pd.DataFrame()
+        
+    # Sort and get top 10
+    sorted_ratings = sorted(ratings.items(), key=lambda x: x[1], reverse=True)[:10]
+    
+    teams = [x[0] for x in sorted_ratings]
+    scores = [x[1] for x in sorted_ratings]
+    
+    df = pd.DataFrame({
+        "Team": teams,
+        "Elo Rating": scores
+    })
+    return df.set_index("Team")
