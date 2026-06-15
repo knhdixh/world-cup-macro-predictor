@@ -372,16 +372,16 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
 
 ## Final Verification Wave
 
-- [ ] F1. **Plan Compliance Audit** — `oracle`
+- [x] F1. **Plan Compliance Audit** — `oracle`
   Verify: all Must Have present, all Must NOT Have absent, regression gate passes.
 
-- [ ] F2. **Code Quality Review** — `unspecified-high`
+- [x] F2. **Code Quality Review** — `unspecified-high`
   Run full test suite, check for slop, verify no forbidden imports.
 
-- [ ] F3. **Real Manual QA** — `unspecified-high`
+- [x] F3. **Real Manual QA** — `unspecified-high`
   Execute backtest pipeline, run calibration, launch dashboard, check CLI.
 
-- [ ] F4. **Scope Fidelity Check** — `deep`
+- [x] F4. **Scope Fidelity Check** — `deep`
   Verify all planned files exist, no unplanned modifications.
 
 ---
