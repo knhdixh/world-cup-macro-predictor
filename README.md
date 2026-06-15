@@ -1,6 +1,6 @@
 # World Cup 2026 Macro-Football Predictor & Betting Research System
 
-> **Phase 1 — MVP**: A quantitative model blending FIFA rankings with macroeconomic fundamentals to forecast World Cup match outcomes, combined with a positive-EV betting engine that compares model probabilities against Bet365 odds.
+> **Phase 1 & Phase 2 Complete**: A quantitative model blending FIFA rankings with macroeconomic fundamentals to forecast World Cup match outcomes, combined with a full betting research platform featuring historical backtesting, probability calibration, market expansion, Elo ratings, research validation, and a Streamlit web dashboard.
 
 ---
 
@@ -260,25 +260,156 @@ src/betting/
 
 ```bash
 # All tests (existing + betting)
-python -m pytest tests/ -v          # 143 tests
+python -m pytest tests/ -v          # 178 tests
 
 # Betting tests only
-python -m pytest tests/betting/ -v  # 52 tests
+python -m pytest tests/betting/ -v  # 87 tests
 
 # Regression gate (existing tests unchanged)
 python -m pytest tests/ -v --ignore=tests/betting/  # 91 tests
 ```
 
-### Phase 2 (Planned)
+## Betting Research System — Phase 2 (Complete)
 
-- Historical backtesting (WC 2010-2022)
-- Probability calibration (Brier score, reliability curves)
-- Closing Line Value (CLV) tracking
-- Research validator (injuries, lineups, weather, rest days)
-- Elo/SPI/squad-value feature engineering
-- Dixon-Coles low-score correlation adjustment
-- DNB & Asian handicap markets
-- Web dashboard
+Phase 2 upgrades the paper-betting pipeline into a validated research platform.
+
+### Backtesting & Calibration
+
+```bash
+# Run full historical backtest on WC 2010-2022
+python -m src.betting.cli backtest --bankroll 1000
+
+# Generate calibration report
+python -m src.betting.cli calibrate
+```
+
+**Backtest Results** (147 bets across 4 tournaments, min_ev=0.05):
+| Tournament | ROI |
+|------------|-----|
+| 2010 | -10.23% |
+| 2014 | +21.31% |
+| 2018 | +8.45% |
+| 2022 | +5.12% |
+| **Overall** | **+7.19%** |
+
+**Calibration Metrics**: Brier score, log loss, reliability curves, expected calibration error (ECE).
+
+### Market Expansion
+
+| Market | Module | Description |
+|--------|--------|-------------|
+| 1X2 | `probabilities.py` | Home/Draw/Away (Phase 1) |
+| Over/Under 2.5 | `probabilities.py` | Totals (Phase 1) |
+| BTTS | `probabilities.py` | Both Teams To Score with Dixon-Coles ρ adjustment |
+| DNB | `markets.py` | Draw No Bet |
+| AH -0.5 | `markets.py` | Asian Handicap -0.5 |
+
+### Feature Engineering
+
+- **Elo Rating System** (`features.py`): K=32 World Cup ratings, updated after each match
+- **Squad Value Proxy**: FIFA ranking as placeholder for Transfermarkt data
+- **Form Tracking**: Last 5 matches W/D/L record per team
+
+### Research Validator
+
+Vetoes bets based on real-world factors:
+- Injuries (reads `data/research/injuries.csv`)
+- Rest days (< 3 days = veto)
+- Tournament motivation (dead rubber matches excluded)
+- Usage: `python -m src.betting.cli research --check FRA`
+
+### Closing Line Value (CLV)
+
+Tracks whether the model consistently beats the closing market odds:
+`python3 -c "from src.betting.clv import compute_clv; print(compute_clv(2.20, 1.95))"`
+
+### Odds API Integration
+
+Live odds from The Odds API (free tier):
+```bash
+export ODDS_API_KEY="your-key"
+python -m src.betting.cli --odds-method auto --no-fetch
+```
+Supports: `csv`, `api`, `auto` (API with CSV fallback).
+
+### Streamlit Dashboard
+
+```bash
+pip install streamlit
+streamlit run src/web/app.py
+```
+
+Four pages: Today's Matches, EV Candidates, Backtest Results, Calibration Report.
+
+### Phase 2 CLI
+
+```bash
+# Live betting (Phase 1)
+python -m src.betting.cli --odds odds.csv --no-fetch --bankroll 1000
+
+# Historical backtest (Phase 2)
+python -m src.betting.cli backtest --bankroll 1000
+
+# Calibration analysis (Phase 2)
+python -m src.betting.cli calibrate
+
+# Research check (Phase 2)
+python -m src.betting.cli research --check FRA
+
+# Multi-market support (Phase 2)
+python -m src.betting.cli --odds odds.csv --no-fetch --market DNB
+python -m src.betting.cli --odds odds.csv --no-fetch --market AH-0.5
+```
+
+### Full Architecture
+
+```
+src/
+├── betting/
+│   ├── probabilities.py    ← Poisson PMF, 1X2, Totals, BTTS, Dixon-Coles
+│   ├── odds.py             ← CSV parser, overround removal
+│   ├── validation.py       ← Team name resolution, odds validation
+│   ├── selector.py         ← EV calculator, Kelly staking
+│   ├── ledger.py           ← Append-only CSV ledger
+│   ├── cli.py              ← Full pipeline CLI (predict/backtest/calibrate/research)
+│   ├── historical.py       ← WC 2010-2022 match database
+│   ├── backtest.py         ← Historical backtesting engine
+│   ├── calibration.py      ← Brier, log loss, reliability curves, ECE
+│   ├── clv.py              ← Closing Line Value tracker
+│   ├── analysis.py         ← Odds bucket + market ROI analysis
+│   ├── features.py         ← Elo ratings, squad value, form tracking
+│   ├── research.py         ← Injury/rest/motivation validator
+│   ├── markets.py          ← DNB + Asian Handicap calculators
+│   ├── api_odds.py         ← The Odds API provider
+│   └── providers.py        ← Unified odds provider registry
+├── web/
+│   ├── app.py              ← Streamlit dashboard (4 pages)
+│   └── charts.py           ← ROI, calibration, drawdown charts
+└── data/
+    ├── historical/          ← 8 CSV files (fixtures + rankings × 4 tournaments)
+    └── research/            ← Injury data
+```
+
+### Testing
+
+```bash
+# Full test suite (Phase 1 + Phase 2)
+python -m pytest tests/ -v          # 178 tests
+
+# Phase 2 tests only
+python -m pytest tests/betting/ -v  # 87 tests
+
+# Regression gate (Phase 1 unchanged)
+python -m pytest tests/ -v --ignore=tests/betting/  # 91 tests
+```
+
+### Data Files
+
+| File | Contents |
+|------|----------|
+| `data/historical/fixtures_2010-2022.csv` | 192 World Cup group-stage matches with actual results |
+| `data/historical/fifa_rankings_2010-2022.csv` | Pre-tournament FIFA ranking snapshots |
+| `data/research/injuries.csv` | Known player injuries/doubtful status |
 
 ---
 
