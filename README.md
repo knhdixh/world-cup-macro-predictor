@@ -1,6 +1,6 @@
-# World Cup 2026 Macro-Football Predictor
+# World Cup 2026 Macro-Football Predictor & Betting Research System
 
-> A quantitative model blending FIFA rankings with macroeconomic fundamentals to forecast World Cup match outcomes.
+> **Phase 1 — MVP**: A quantitative model blending FIFA rankings with macroeconomic fundamentals to forecast World Cup match outcomes, combined with a positive-EV betting engine that compares model probabilities against Bet365 odds.
 
 ---
 
@@ -157,6 +157,128 @@ python -m pytest tests/ -v
 ```
 
 Outputs: `output/world_cup_predictions.csv` and `output/world_cup_predictions.xlsx`
+
+---
+
+## Betting Research System (Phase 1 MVP)
+
+The betting engine converts the macro-football model's expected goals (xG) into calibrated match-outcome probabilities and compares them against Bet365 odds to identify positive expected value (EV) betting opportunities.
+
+### Markets Supported
+
+| Market | Description |
+|--------|-------------|
+| 1X2 | Home win / Draw / Away win |
+| Over/Under 2.5 | Total goals over or under 2.5 |
+| BTTS | Both teams to score (yes/no) |
+
+### How It Works
+
+1. **Clean xG extraction** — the prediction model now outputs noise-free xG values alongside the standard noisy predictions
+2. **Poisson probability engine** — converts (xG_home, xG_away) into probability distributions using a Poisson goal grid (max_goals=10)
+3. **Odds ingestion** — reads Bet365 odds from a manually-exported CSV (no scraping required)
+4. **Overround normalization** — removes bookmaker margin via proportional method to compute fair implied probabilities
+5. **EV calculation** — ranks bets by expected value: `EV = p_model × odds − 1`
+6. **Fractional Kelly staking** — recommends stake sizes using quarter-Kelly with a 5% bankroll hard cap
+7. **Paper bet ledger** — append-only CSV tracking all candidates with 17-column audit trail
+
+### Running the Betting CLI
+
+```bash
+# Help
+python -m src.betting.cli --help
+
+# Full pipeline with sample odds (mock data for offline testing)
+python -m src.betting.cli \
+    --odds tests/fixtures/sample_odds.csv \
+    --no-fetch \
+    --bankroll 1000 \
+    --output-dir ./output/betting
+
+# With custom EV thresholds
+python -m src.betting.cli \
+    --odds odds.csv \
+    --no-fetch \
+    --min-ev 0.05 \
+    --min-odds 1.50 \
+    --max-odds 3.50 \
+    --kelly-fraction 0.25
+```
+
+### CLI Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--odds PATH` | (required) | Path to Bet365 odds CSV |
+| `--bankroll FLOAT` | 1000.0 | Starting bankroll |
+| `--no-fetch` | false | Use mock data (offline mode) |
+| `--output-dir PATH` | ./output/betting | Output directory for ledger |
+| `--min-ev FLOAT` | 0.03 | Minimum EV threshold (3% for paper) |
+| `--min-odds FLOAT` | 1.50 | Minimum decimal odds |
+| `--max-odds FLOAT` | 3.50 | Maximum decimal odds |
+| `--kelly-fraction FLOAT` | 0.25 | Fraction of full Kelly |
+| `--max-stake-pct FLOAT` | 0.05 | Max stake as % of bankroll |
+
+### Odds CSV Format
+
+Create a CSV from Bet365's website (manual export — NO scraping):
+
+```
+timestamp,event_id,kickoff,home,away,book,market,selection,line,decimal_odds
+2026-06-15T12:00:00,WC2026-13,2026-06-15T18:00:00,Spain,Cabo Verde,bet365,1X2,Spain,,1.22
+2026-06-15T12:00:00,WC2026-13,2026-06-15T18:00:00,Spain,Cabo Verde,bet365,1X2,Draw,,5.50
+2026-06-15T12:00:00,WC2026-13,2026-06-15T18:00:00,Spain,Cabo Verde,bet365,1X2,Cabo Verde,,15.00
+```
+
+### Example Output
+
+```
+=== BETTING CANDIDATES (ranked by EV) ===
+
+Match                     Selection        Odds     Model%   EV       Stake   
+---------------------------------------------------------------------------
+IRN vs NZL                IRN              1.90     60.5%    15.0%    $41.60
+SAU vs URY                URY              2.05     55.4%    13.6%    $32.49
+
+Total: 2 bets | Total stake: $74.09 | Bankroll: $1000.00
+```
+
+### Architecture
+
+```
+src/betting/
+├── __init__.py
+├── probabilities.py    ← Poisson PMF, 1X2, Totals, BTTS
+├── odds.py             ← CSV parser, overround removal
+├── validation.py       ← Team name resolution, odds validation
+├── selector.py         ← EV calculator, Kelly staking
+├── ledger.py           ← Append-only CSV ledger
+└── cli.py              ← Full pipeline CLI
+```
+
+### Testing
+
+```bash
+# All tests (existing + betting)
+python -m pytest tests/ -v          # 143 tests
+
+# Betting tests only
+python -m pytest tests/betting/ -v  # 52 tests
+
+# Regression gate (existing tests unchanged)
+python -m pytest tests/ -v --ignore=tests/betting/  # 91 tests
+```
+
+### Phase 2 (Planned)
+
+- Historical backtesting (WC 2010-2022)
+- Probability calibration (Brier score, reliability curves)
+- Closing Line Value (CLV) tracking
+- Research validator (injuries, lineups, weather, rest days)
+- Elo/SPI/squad-value feature engineering
+- Dixon-Coles low-score correlation adjustment
+- DNB & Asian handicap markets
+- Web dashboard
 
 ---
 
