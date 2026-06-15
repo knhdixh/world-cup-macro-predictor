@@ -1,0 +1,4 @@
+VALID CSV: 15 rows parsed
+INVALID CSV CAUGHT: Missing required columns: home
+Row 3: invalid decimal_odds -...
+ALL ODDS PASS

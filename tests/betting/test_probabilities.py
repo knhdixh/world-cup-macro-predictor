@@ -92,3 +92,15 @@ def test_1x2_balanced() -> None:
 def test_1x2_prob_sum() -> None:
     probs = match_outcome_probs(1.7, 1.3)
     assert abs(sum(probs.values()) - 1.0) < 0.001
+
+
+def test_dixon_coles_btts() -> None:
+    baseline = btts_probs(2.0, 1.0)
+    adjusted = btts_probs(2.0, 1.0, rho=-0.05)
+    assert adjusted["yes"] > baseline["yes"]
+
+
+def test_dixon_coles_rho_zero_unchanged() -> None:
+    baseline = match_outcome_probs(2.0, 1.0)
+    probs = match_outcome_probs(2.0, 1.0, rho=0.0)
+    assert probs == baseline

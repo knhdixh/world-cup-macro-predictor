@@ -1,0 +1,1 @@
+FORMULA PASS: blended_to_xg(0.75) = 3.0

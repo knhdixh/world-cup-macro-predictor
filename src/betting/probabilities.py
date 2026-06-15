@@ -18,6 +18,18 @@ __all__ = [
 ]
 
 
+def _dixon_coles_factor(i: int, j: int, xg_home: float, xg_away: float, rho: float) -> float:
+    if (i, j) == (0, 0):
+        return 1.0 - xg_home * xg_away * rho
+    if (i, j) == (0, 1):
+        return 1.0 + xg_home * rho
+    if (i, j) == (1, 0):
+        return 1.0 + xg_away * rho
+    if (i, j) == (1, 1):
+        return 1.0 - rho
+    return 1.0
+
+
 def poisson_pmf(k: int, lam: float) -> float:
     """Return the Poisson probability mass for ``P(X = k)``.
 
@@ -110,12 +122,10 @@ def totals_probs(
     return {"over": over, "under": under}
 
 
-def btts_probs(xg_home: float, xg_away: float) -> dict[str, float]:
+def btts_probs(xg_home: float, xg_away: float, rho: float = 0.0) -> dict[str, float]:
     """Return both-teams-to-score probabilities.
 
-    P(home scores ≥ 1) = 1 - e^(-xg_home)
-    P(away scores ≥ 1) = 1 - e^(-xg_away)
-    Independence assumption: P(BTTS yes) = P(home≥1) * P(away≥1)
+    When rho=0, this reduces to the original independence assumption.
 
     Returns {"yes": p, "no": p}, summing to 1.0.
 
@@ -123,15 +133,38 @@ def btts_probs(xg_home: float, xg_away: float) -> dict[str, float]:
     Independence assumption. Low-score correlation adjustment
     deferred to Phase 2.
     """
-    home_scores = 1.0 - math.exp(-max(0.0, xg_home))
-    away_scores = 1.0 - math.exp(-max(0.0, xg_away))
-    yes = home_scores * away_scores
+    home_probs = poisson_probs(xg_home)
+    away_probs = poisson_probs(xg_away)
+
+    if rho == 0.0:
+        home_scores = 1.0 - math.exp(-max(0.0, xg_home))
+        away_scores = 1.0 - math.exp(-max(0.0, xg_away))
+        yes = home_scores * away_scores
+        no = 1.0 - yes
+        return {"yes": yes, "no": no}
+
+    joint_probs = []
+    normalizer = 0.0
+    for i in range(len(home_probs)):
+        row = []
+        for j in range(len(away_probs)):
+            prob = home_probs[i] * away_probs[j] * _dixon_coles_factor(i, j, xg_home, xg_away, rho)
+            prob = max(0.0, prob)
+            row.append(prob)
+            normalizer += prob
+        joint_probs.append(row)
+
+    yes = 0.0
+    for i in range(1, len(joint_probs)):
+        for j in range(1, len(joint_probs[i])):
+            yes += joint_probs[i][j]
+    yes = yes / normalizer if normalizer else 0.0
     no = 1.0 - yes
     return {"yes": yes, "no": no}
 
 
 def match_outcome_probs(
-    xg_home: float, xg_away: float, max_goals: int = 10
+    xg_home: float, xg_away: float, max_goals: int = 10, rho: float = 0.0
 ) -> dict[str, float]:
     """Return home/draw/away probabilities from Poisson goal distribution.
 
@@ -149,6 +182,8 @@ def match_outcome_probs(
         Expected goals for the away team.
     max_goals : int, default 10
         Maximum goals considered.
+    rho : float, default 0.0
+        Dixon-Coles low-score correlation adjustment.
 
     Returns
     -------
@@ -158,13 +193,41 @@ def match_outcome_probs(
     home_probs = poisson_probs(xg_home, max_goals)
     away_probs = poisson_probs(xg_away, max_goals)
 
+    if rho == 0.0:
+        p_home = 0.0
+        p_draw = 0.0
+        p_away = 0.0
+
+        for i in range(max_goals + 1):
+            for j in range(max_goals + 1):
+                prob = home_probs[i] * away_probs[j]
+                if i > j:
+                    p_home += prob
+                elif i < j:
+                    p_away += prob
+                else:
+                    p_draw += prob
+
+        return {"home": p_home, "draw": p_draw, "away": p_away}
+
+    joint_probs = []
+    normalizer = 0.0
+    for i in range(max_goals + 1):
+        row = []
+        for j in range(max_goals + 1):
+            prob = home_probs[i] * away_probs[j] * _dixon_coles_factor(i, j, xg_home, xg_away, rho)
+            prob = max(0.0, prob)
+            row.append(prob)
+            normalizer += prob
+        joint_probs.append(row)
+
     p_home = 0.0
     p_draw = 0.0
     p_away = 0.0
 
     for i in range(max_goals + 1):
         for j in range(max_goals + 1):
-            prob = home_probs[i] * away_probs[j]
+            prob = joint_probs[i][j] / normalizer if normalizer else 0.0
             if i > j:
                 p_home += prob
             elif i < j:

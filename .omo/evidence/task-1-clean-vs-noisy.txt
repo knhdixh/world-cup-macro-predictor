@@ -1,0 +1,4 @@
+clean_xg_keys: team_a_clean_xg=3.4000000000000004 team_b_clean_xg=0.2
+noisy_xg: team_a_xg=3.3567729011266216 team_b_xg=0.6495825353122613
+clean_neq_noisy: team_a=True team_b=True
+ALL ASSERTIONS PASS

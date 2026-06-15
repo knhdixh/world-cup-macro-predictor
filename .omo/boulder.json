@@ -1,0 +1,238 @@
+{
+  "active_plan": "/home/sieub/football_prediction/.omo/plans/betting-system-phase2.md",
+  "started_at": "2026-06-15T14:17:04.033Z",
+  "session_ids": [
+    "opencode:ses_135537d61ffepq6F3VUVMBMk7z"
+  ],
+  "plan_name": "betting-system-phase2",
+  "session_origins": {
+    "opencode:ses_135537d61ffepq6F3VUVMBMk7z": "direct"
+  },
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Historical match database — WC 2010/2014/2018/2022 data",
+      "session_id": "opencode:ses_1345ae1bcffeUdimiAPO6FxStJ",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-06-15T14:21:33.483Z",
+      "started_at": "2026-06-15T14:21:23.403Z",
+      "status": "completed",
+      "ended_at": "2026-06-15T14:21:33.483Z",
+      "elapsed_ms": 10080
+    },
+    "todo:2": {
+      "task_key": "todo:2",
+      "task_label": "2",
+      "task_title": "Backtesting engine — replay Phase 1 model on historical data",
+      "session_id": "opencode:ses_13456b432ffe2U72GMUEwEat2U",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-06-15T14:24:50.173Z",
+      "started_at": "2026-06-15T14:24:41.647Z",
+      "status": "completed",
+      "ended_at": "2026-06-15T14:24:50.173Z",
+      "elapsed_ms": 8526
+    },
+    "todo:6": {
+      "task_key": "todo:6",
+      "task_label": "6",
+      "task_title": "Dixon-Coles adjustment — low-score correlation for BTTS",
+      "session_id": "opencode:ses_13453fd13ffeJNj4dVEAMkv6d4",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-06-15T14:27:09.856Z",
+      "started_at": "2026-06-15T14:26:40.505Z",
+      "status": "completed",
+      "ended_at": "2026-06-15T14:27:09.856Z",
+      "elapsed_ms": 29351
+    }
+  },
+  "schema_version": 2,
+  "works": {
+    "betting-system-mvp-legacy": {
+      "work_id": "betting-system-mvp-legacy",
+      "active_plan": "/home/sieub/football_prediction/.omo/plans/betting-system-mvp.md",
+      "plan_name": "betting-system-mvp",
+      "started_at": "2026-06-15T11:48:11.254430+00:00",
+      "updated_at": "2026-06-15T12:19:25.560Z",
+      "session_ids": [
+        "opencode:ses_135537d61ffepq6F3VUVMBMk7z"
+      ],
+      "session_origins": {
+        "opencode:ses_135537d61ffepq6F3VUVMBMk7z": "direct"
+      },
+      "worktree_path": null,
+      "task_sessions": {
+        "todo:1": {
+          "task_key": "todo:1",
+          "task_label": "1",
+          "task_title": "Clean xG extraction — add noise-free xG to `predict_match()` return dict",
+          "session_id": "opencode:ses_134e34891ffefJxvLX7S86kJpf",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T11:52:39.334Z",
+          "started_at": "2026-06-15T11:50:55.370Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T11:52:39.334Z",
+          "elapsed_ms": 103964
+        },
+        "todo:2": {
+          "task_key": "todo:2",
+          "task_label": "2",
+          "task_title": "Poisson probability math module — pure Python Poisson PMF",
+          "session_id": "opencode:ses_134df64e7ffeWzZ4E2xhT5an49",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T11:56:26.386Z",
+          "started_at": "2026-06-15T11:54:19.140Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T11:56:26.386Z",
+          "elapsed_ms": 127246
+        },
+        "todo:3": {
+          "task_key": "todo:3",
+          "task_label": "3",
+          "task_title": "1X2 market probability calculator — Home/Draw/Away from Poisson grid",
+          "session_id": "opencode:ses_134db9781ffeP2Cu9TDpwqOAmK",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T12:00:40.758Z",
+          "started_at": "2026-06-15T12:00:27.960Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T12:00:40.758Z",
+          "elapsed_ms": 12798
+        },
+        "todo:8": {
+          "task_key": "todo:8",
+          "task_label": "8",
+          "task_title": "EV calculator + bet selector — expected value and bet ranking",
+          "session_id": "opencode:ses_134d7baceffe0jwFmKo4HBAEAP",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T12:03:18.262Z",
+          "started_at": "2026-06-15T12:03:08.443Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T12:03:18.262Z",
+          "elapsed_ms": 9819
+        },
+        "todo:9": {
+          "task_key": "todo:9",
+          "task_label": "9",
+          "task_title": "Kelly staking engine — fractional Kelly with hard caps",
+          "session_id": "opencode:ses_134d59adafferKYdOnHHf5dvKN",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T12:05:19.244Z",
+          "started_at": "2026-06-15T12:05:09.414Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T12:05:19.244Z",
+          "elapsed_ms": 9830
+        },
+        "todo:10": {
+          "task_key": "todo:10",
+          "task_label": "10",
+          "task_title": "Paper bet ledger — append-only CSV with audit trail",
+          "session_id": "opencode:ses_134d3bfbaffeNAzZgEceQXVHvR",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T12:07:53.557Z",
+          "started_at": "2026-06-15T12:07:45.205Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T12:07:53.557Z",
+          "elapsed_ms": 8352
+        },
+        "todo:11": {
+          "task_key": "todo:11",
+          "task_label": "11",
+          "task_title": "Betting CLI — full pipeline entry point",
+          "session_id": "opencode:ses_134d12c8affeawKmxysucOsiSn",
+          "agent": "Sisyphus-Junior",
+          "category": "unspecified-high",
+          "updated_at": "2026-06-15T12:13:52.970Z",
+          "started_at": "2026-06-15T12:13:15.203Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T12:13:52.970Z",
+          "elapsed_ms": 37767
+        },
+        "final-wave:f1": {
+          "task_key": "final-wave:f1",
+          "task_label": "F1",
+          "task_title": "**Plan Compliance Audit** — `oracle`",
+          "session_id": "opencode:ses_134cbd3b7ffe1PiOMn0HvMK6Mx",
+          "agent": "oracle",
+          "updated_at": "2026-06-15T12:17:03.475Z",
+          "started_at": "2026-06-15T12:16:23.791Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T12:17:03.475Z",
+          "elapsed_ms": 39684
+        }
+      },
+      "ended_at": "2026-06-15T12:19:25.560Z",
+      "elapsed_ms": 1874306,
+      "status": "completed"
+    },
+    "betting-system-phase2-41971225": {
+      "work_id": "betting-system-phase2-41971225",
+      "active_plan": "/home/sieub/football_prediction/.omo/plans/betting-system-phase2.md",
+      "plan_name": "betting-system-phase2",
+      "status": "active",
+      "started_at": "2026-06-15T14:17:04.033Z",
+      "updated_at": "2026-06-15T14:27:09.856Z",
+      "session_ids": [
+        "opencode:ses_135537d61ffepq6F3VUVMBMk7z"
+      ],
+      "session_origins": {
+        "opencode:ses_135537d61ffepq6F3VUVMBMk7z": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {
+        "todo:1": {
+          "task_key": "todo:1",
+          "task_label": "1",
+          "task_title": "Historical match database — WC 2010/2014/2018/2022 data",
+          "session_id": "opencode:ses_1345ae1bcffeUdimiAPO6FxStJ",
+          "agent": "Sisyphus-Junior",
+          "category": "unspecified-high",
+          "updated_at": "2026-06-15T14:21:33.483Z",
+          "started_at": "2026-06-15T14:21:23.403Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T14:21:33.483Z",
+          "elapsed_ms": 10080
+        },
+        "todo:2": {
+          "task_key": "todo:2",
+          "task_label": "2",
+          "task_title": "Backtesting engine — replay Phase 1 model on historical data",
+          "session_id": "opencode:ses_13456b432ffe2U72GMUEwEat2U",
+          "agent": "Sisyphus-Junior",
+          "category": "unspecified-high",
+          "updated_at": "2026-06-15T14:24:50.173Z",
+          "started_at": "2026-06-15T14:24:41.647Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T14:24:50.173Z",
+          "elapsed_ms": 8526
+        },
+        "todo:6": {
+          "task_key": "todo:6",
+          "task_label": "6",
+          "task_title": "Dixon-Coles adjustment — low-score correlation for BTTS",
+          "session_id": "opencode:ses_13453fd13ffeJNj4dVEAMkv6d4",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-15T14:27:09.856Z",
+          "started_at": "2026-06-15T14:26:40.505Z",
+          "status": "completed",
+          "ended_at": "2026-06-15T14:27:09.856Z",
+          "elapsed_ms": 29351
+        }
+      }
+    }
+  },
+  "active_work_id": "betting-system-phase2-41971225",
+  "updated_at": "2026-06-15T14:27:09.856Z",
+  "status": "active",
+  "task_elapsed_ms": 349460,
+  "agent": "atlas"
+}
