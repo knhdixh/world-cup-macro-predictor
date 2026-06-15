@@ -101,15 +101,17 @@ def predict_match(
 
     a_blended = compute_blended_score(a_norm_fifa, a_norm_econ)
     b_blended = compute_blended_score(b_norm_fifa, b_norm_econ)
+    team_a_clean_xg = blended_to_xg(a_blended)
+    team_b_clean_xg = blended_to_xg(b_blended)
 
     # Use a composite seed so both teams get independent noise even when
     # the caller supplies a single seed.
     if seed is not None:
-        a_xg = apply_noise(blended_to_xg(a_blended), seed=seed)
-        b_xg = apply_noise(blended_to_xg(b_blended), seed=seed + 1)
+        a_xg = apply_noise(team_a_clean_xg, seed=seed)
+        b_xg = apply_noise(team_b_clean_xg, seed=seed + 1)
     else:
-        a_xg = apply_noise(blended_to_xg(a_blended))
-        b_xg = apply_noise(blended_to_xg(b_blended))
+        a_xg = apply_noise(team_a_clean_xg)
+        b_xg = apply_noise(team_b_clean_xg)
 
     predicted_score = f"{round(a_xg)}-{round(b_xg)}"
 
@@ -118,6 +120,8 @@ def predict_match(
         "team_b": team_b_iso3,
         "team_a_xg": a_xg,
         "team_b_xg": b_xg,
+        "team_a_clean_xg": team_a_clean_xg,
+        "team_b_clean_xg": team_b_clean_xg,
         "predicted_score": predicted_score,
         "team_a_blended": a_blended,
         "team_b_blended": b_blended,

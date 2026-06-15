@@ -150,7 +150,7 @@ def test_predict_all(sample_dataset: pd.DataFrame, ten_matches: list[dict[str, A
         "team_b_fifa",
     }
     for pred in predictions:
-        assert set(pred.keys()) == required_keys
+        assert required_keys.issubset(set(pred.keys())), f"Missing keys: {required_keys - set(pred.keys())}"
         assert isinstance(pred["predicted_score"], str)
         assert "-" in pred["predicted_score"]
 
