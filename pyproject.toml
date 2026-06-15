@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "football-prediction"
 version = "0.1.0"
-description = "World Cup prediction script combining FIFA rankings with World Bank indicators"
+description = "World Cup 2026 macro-football predictor and betting research system"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
@@ -27,6 +27,7 @@ dependencies = [
     "openpyxl>=3.1",
     "requests>=2.31",
     "wbgapi>=1.0.13",
+    "streamlit>=1.35",
 ]
 
 [project.optional-dependencies]
@@ -58,3 +59,6 @@ addopts = [
     "--strict-markers",
     "--strict-config",
 ]
+
+[tool.poetry]
+package-mode = false
